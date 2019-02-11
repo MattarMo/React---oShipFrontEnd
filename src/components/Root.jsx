@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import LoginForm from './LoginForm.jsx';
 export default class Root extends Component {
   render() {
     return (
@@ -7,8 +7,15 @@ export default class Root extends Component {
         <div className="row">
           <div className="col-12">
             <div className="jumbotron">
-              Hello World, you are in the {NODE_ENV} environment!
+              <center>
+                <b>Hello World, you are in the {NODE_ENV} environment!!!</b>
+              </center>
             </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
+            <LoginForm />
           </div>
         </div>
       </div>
