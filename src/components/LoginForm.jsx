@@ -16,49 +16,51 @@ export default class LoginForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleSubmit(event) {
-    alert(
+  handleSubmit(e) {
+    console.log(
       'UserName: \n' +
         this.state.username +
         '\nPassWord:\n' +
         this.state.password
     );
-    event.preventDefault();
+    e.preventDefault();
   }
   render() {
     return (
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <div className="jumbotron align-items-center">
+            <div className="jumbotron">
               <h1>
                 <center>LOG IN</center>
               </h1>
-              <form onSubmit={this.handleSubmit}>
-                <label>
-                  UserName:
+              <center>
+                <form onSubmit={this.handleSubmit}>
+                  <label>
+                    UserName:
+                    <br />
+                    <input
+                      type="text"
+                      name="username"
+                      value={this.state.loginInfo}
+                      onChange={this.handleChange}
+                    />
+                  </label>
                   <br />
-                  <input
-                    type="text"
-                    name="username"
-                    value={this.state.loginInfo}
-                    onChange={this.handleChange}
-                  />
-                </label>
-                <br />
-                <label>
-                  Password:
+                  <label>
+                    Password:
+                    <br />
+                    <input
+                      type="text"
+                      name="password"
+                      value={this.state.loginInfo}
+                      onChange={this.handleChange}
+                    />
+                  </label>
                   <br />
-                  <input
-                    type="text"
-                    name="password"
-                    value={this.state.loginInfo}
-                    onChange={this.handleChange}
-                  />
-                </label>
-                <br />
-                <input type="submit" value="Submit" />
-              </form>
+                  <input type="submit" value="Submit" />
+                </form>
+              </center>
             </div>
           </div>
         </div>
