@@ -37,7 +37,7 @@ export default class LoginForm extends Component {
               <center>
                 <form onSubmit={this.handleSubmit}>
                   <label>
-                    UserName:
+                    Username:
                     <br />
                     <input
                       type="text"

@@ -19,7 +19,8 @@ export default class Calc extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  calculateTips(endingTicNum, startingTicNum, totalhours) {
+  calculateTips() {
+    const { endingTicNum, startingTicNum, totalhours } = this.state;
     const carsParked = endingTicNum - startingTicNum;
     const tips = (carsParked * 4) / totalhours;
 
@@ -35,8 +36,9 @@ export default class Calc extends Component {
         '\nTotal Hours Worked:\n' +
         this.state.totalhours +
         '\nTotal Money Earned:\n' +
-        this.state.totalmoney +
-        '\nTips Earned:\n'
+        this.state.totalMoney +
+        '\nTips Earned:\n' +
+        this.calculateTips()
     );
     e.preventDefault();
   }
@@ -57,7 +59,7 @@ export default class Calc extends Component {
                     <input
                       type="number"
                       name="startTicNum"
-                      value={this.state.loginInfo}
+                      value={this.state.startTicNum}
                       onChange={this.handleChange}
                     />
                   </label>
@@ -68,7 +70,7 @@ export default class Calc extends Component {
                     <input
                       type="number"
                       name="endingTicNum"
-                      value={this.state.loginInfo}
+                      value={this.state.endingTicNum}
                       onChange={this.handleChange}
                     />
                   </label>
@@ -78,8 +80,8 @@ export default class Calc extends Component {
                     <br />
                     <input
                       type="number"
-                      name="totalmoney"
-                      value={this.state.loginInfo}
+                      name="totalMoney"
+                      value={this.state.totalMoney}
                       onChange={this.handleChange}
                     />
                   </label>
@@ -90,7 +92,7 @@ export default class Calc extends Component {
                     <input
                       type="number"
                       name="totalhours"
-                      value={this.state.loginInfo}
+                      value={this.state.totalhours}
                       onChange={this.handleChange}
                     />
                   </label>
