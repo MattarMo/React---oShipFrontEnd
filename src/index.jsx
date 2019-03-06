@@ -5,10 +5,10 @@ import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap';
 import './styles/index.scss';
 
-const app = {
+const app = (
   <BrowserRouter>
     <Root />
   </BrowserRouter>
-};
+);
 
 render(app, document.getElementById('app'));
