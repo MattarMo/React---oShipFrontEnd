@@ -1,12 +1,12 @@
 import React from 'react';
-//import { Link } from 'react-router-dom'; use Link instead of <a
+import { Link } from 'react-router-dom'; //use Link instead of <a
 
 const Navigation = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">
+      <Link to="/" className="navbar-brand">
         Navbar
-      </a>
+      </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -21,19 +21,19 @@ const Navigation = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item active">
-            <a className="nav-link" href="#">
+            <Link to="/" className="nav-link">
               Home
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <Link to="/login-form" className="nav-link">
               Login form
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <Link to="/calc" className="nav-link">
               Valet Tip Calculator
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
             <a className="nav-link disabled" href="#">
