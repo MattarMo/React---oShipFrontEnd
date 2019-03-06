@@ -27,44 +27,37 @@ export default class LoginForm extends Component {
   }
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <div className="jumbotron">
-              <h1>
-                <center>LOG IN</center>
-              </h1>
-              <center>
-                <form onSubmit={this.handleSubmit}>
-                  <label>
-                    Username:
-                    <br />
-                    <input
-                      type="text"
-                      name="username"
-                      value={this.state.loginInfo}
-                      onChange={this.handleChange}
-                    />
-                  </label>
-                  <br />
-                  <label>
-                    Password:
-                    <br />
-                    <input
-                      type="text"
-                      name="password"
-                      value={this.state.loginInfo}
-                      onChange={this.handleChange}
-                    />
-                  </label>
-                  <br />
-                  <input type="submit" value="Submit" />
-                </form>
-              </center>
-            </div>
+      <body className="container">
+        <form className="align-content-center">
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <br />
+            <input
+              className="form-control"
+              input-lg
+              type="text"
+              name="username"
+              value={this.state.loginInfo}
+              onChange={this.handleChange}
+            />
           </div>
-        </div>
-      </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <br />
+            <input
+              className="form-control"
+              input-lg
+              type="text"
+              name="password"
+              value={this.state.loginInfo}
+              onChange={this.handleChange}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </body>
     );
   }
 }

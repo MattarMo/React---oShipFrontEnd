@@ -97,7 +97,9 @@ export default class Calc extends Component {
                     />
                   </label>
                   <br />
-                  <input type="submit" value="Submit" />
+                  <button type="submit" className="btn btn-primary">
+                    Submit
+                  </button>
                 </form>
               </center>
             </div>

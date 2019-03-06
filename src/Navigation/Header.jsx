@@ -36,8 +36,8 @@ const Navigation = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link disabled" href="#">
-              Disabled
+            <a className="nav-link" href="#">
+              Make API Call
             </a>
           </li>
         </ul>
