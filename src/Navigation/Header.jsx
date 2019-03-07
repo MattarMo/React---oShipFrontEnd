@@ -5,7 +5,7 @@ const Navigation = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link to="/" className="navbar-brand">
-        Navbar
+        React
       </Link>
       <button
         className="navbar-toggler"

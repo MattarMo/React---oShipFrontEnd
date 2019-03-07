@@ -27,37 +27,43 @@ export default class LoginForm extends Component {
   }
   render() {
     return (
-      <body className="container">
-        <form className="align-content-center">
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <br />
-            <input
-              className="form-control"
-              input-lg
-              type="text"
-              name="username"
-              value={this.state.loginInfo}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <br />
-            <input
-              className="form-control"
-              input-lg
-              type="text"
-              name="password"
-              value={this.state.loginInfo}
-              onChange={this.handleChange}
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
-      </body>
+      <div className="row">
+        <div className="col-md-3 align-self-center" />
+        <div className="card text-white border-primary mb-3 text-center">
+          <div className="card-header bg-light text-dark">Login Form</div>
+          <form className="align-content-center">
+            <div className="card-body bg-secondary">
+              <div className="form-group">
+                <label htmlFor="username">Username</label>
+                <br />
+                <input
+                  className="form-control"
+                  type="text"
+                  name="username"
+                  value={this.state.loginInfo}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <br />
+                <input
+                  className="form-control"
+                  type="text"
+                  name="password"
+                  value={this.state.loginInfo}
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <div className="card-footer text-muted">
+              <button type="submit" className="btn btn-group-lg btn-primary">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     );
   }
 }
