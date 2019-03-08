@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import AddPerson from './AddPerson';
+import AddPerson from './AddPerson.jsx';
 
 export default class GetPersons extends Component {
   constructor(props) {
@@ -21,6 +21,7 @@ export default class GetPersons extends Component {
     return (
       <div>
         <AddPerson />
+
         <ul>
           {this.state.persons.map(person => (
             <li key={person.id}>{person.name}</li>

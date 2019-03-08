@@ -38,6 +38,7 @@ export default class AddPerson extends Component {
           Person Name
           <input type="text" name="name" onChange={this.handlechange} />
         </label>
+        <button type="submit">Add</button>
       </form>
     );
   }
