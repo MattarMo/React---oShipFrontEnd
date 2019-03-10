@@ -20,8 +20,6 @@ export default class GetPersons extends Component {
   render() {
     return (
       <div>
-        <AddPerson />
-
         <ul>
           {this.state.persons.map(person => (
             <li key={person.id}>{person.name}</li>
