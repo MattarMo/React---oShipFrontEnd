@@ -5,7 +5,7 @@ const Navigation = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link to="/" className="navbar-brand">
-        React
+        <img src={'../assets/images/OShip_Icon_v4.png'} alt="Sample avatar" />
       </Link>
       <button
         className="navbar-toggler"
@@ -21,23 +21,23 @@ const Navigation = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link to="/" className="nav-link">
+            <Link to="/" className="nav-link active">
               Home
             </Link>
           </li>
           <li className="nav-item">
             <Link to="/login-form" className="nav-link">
-              Login form
+              Login
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/calc" className="nav-link">
-              Valet Tip Calculator
+            <Link to="/signup-form" className="nav-link">
+              Sign Up
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/api" className="nav-link">
-              Make API Call
+            <Link to="/about" className="nav-link">
+              About
             </Link>
           </li>
         </ul>
