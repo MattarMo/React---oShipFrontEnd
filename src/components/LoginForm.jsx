@@ -17,18 +17,18 @@ export default class LoginForm extends Component {
   }
 
   handleSubmit(e) {
+    e.preventDefault();
     console.log(
       'UserName: \n' +
         this.state.username +
         '\nPassWord:\n' +
         this.state.password
     );
-    e.preventDefault();
   }
   render() {
     return (
-      <div className="row">
-        <div className="col-md-3 align-self-center" />
+      <div className="container">
+        <div className="col-12" />
         <div className="card text-white border-primary mb-3 text-center">
           <div className="card-header bg-light text-dark">Login Form</div>
           <form className="align-content-center">
@@ -40,7 +40,7 @@ export default class LoginForm extends Component {
                   className="form-control"
                   type="text"
                   name="username"
-                  value={this.state.loginInfo}
+                  value={this.state.username}
                   onChange={this.handleChange}
                 />
               </div>
@@ -49,9 +49,9 @@ export default class LoginForm extends Component {
                 <br />
                 <input
                   className="form-control"
-                  type="text"
+                  type="password"
                   name="password"
-                  value={this.state.loginInfo}
+                  value={this.state.password}
                   onChange={this.handleChange}
                 />
               </div>

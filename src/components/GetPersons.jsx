@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import AddPerson from './AddPerson.jsx';
+//import AddPerson from './AddPerson.jsx';
 
 export default class GetPersons extends Component {
   constructor(props) {
