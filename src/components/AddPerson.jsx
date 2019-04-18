@@ -13,7 +13,7 @@ export default class AddPerson extends Component {
   }
 
   handlchange(e) {
-    this.state({ name: event.target.value });
+    this.state({ name: e.target.value });
   }
 
   handlsubmit(e) {
