@@ -12,6 +12,7 @@ class Core extends Component {
     return (
       <div>
         <Header />
+        <br />
         <Route exact path="/" component={HomeLayout} />
         <Route path="/login-form" component={LoginForm} />
         <Route path="/signup-form" component={SignupForm} />
