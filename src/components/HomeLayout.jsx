@@ -51,9 +51,7 @@ const HomeLayout = () => {
               </h3>
               <p>Sign up to be a driver</p>
               <p>
-                <a className="btn btn-lg btn-success" asp-action="About">
-                  Learn More
-                </a>
+                <a className="btn btn-lg btn-success">Learn More</a>
               </p>
             </div>
           </div>
