@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HomeLayout = () => {
   return (
@@ -31,9 +32,11 @@ const HomeLayout = () => {
             <div className="carousel-caption">
               <h3 className="h3-responsive">On Demand Delivery</h3>
               <p>We make delivery fast and easy</p>
-              <p>
-                <a className="btn btn-lg btn-success">Learn More</a>
-              </p>
+              <Link to="/about" className="nav-link">
+                <p>
+                  <button className="btn btn-lg btn-success">Learn More</button>
+                </p>
+              </Link>
             </div>
           </div>
           <div className="carousel-item">
