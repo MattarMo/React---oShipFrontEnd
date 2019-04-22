@@ -1,126 +1,166 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Formik } from 'formik';
+//import Yup from 'yup';
 
-export default class SignupForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      totalMoney: '',
-      totalhours: '',
-      startingTicNum: '',
-      endingTicNum: ''
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  calculateTips() {
-    const { endingTicNum, startingTicNum, totalhours } = this.state;
-    const carsParked = endingTicNum - startingTicNum;
-    const tips = (carsParked * 4) / totalhours;
-
-    return tips;
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    alert(
-      'Starting Ticket Number: \n' +
-        this.state.startTicNum +
-        '\nEnding Ticket Number:\n' +
-        this.state.endingTicNum +
-        '\nTotal Hours Worked:\n' +
-        this.state.totalhours +
-        '\nTotal Money Earned:\n' +
-        this.state.totalMoney +
-        '\nTips Earned:\n' +
-        this.calculateTips()
-    );
-  }
-  render() {
-    return (
-      <div className="col-12">
-        <h1>
-          <center>Sign Up</center>
-        </h1>
-        <center>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Username:
-              <br />
-              <input
-                type="number"
-                name="startTicNum"
-                value={this.state.startTicNum}
-                onChange={this.handleChange}
-              />
+const SignupForm = () => {
+  return (
+    <Formik
+      initialValues={{
+        username: '',
+        password: '',
+        email: '',
+        streetNumber: '',
+        streetName: '',
+        city: ''
+      }}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 1000);
+      }}
+      render={({
+        values,
+        touched,
+        errors,
+        dirty,
+        isSubmitting,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        handleReset
+      }) => (
+        <div className="container">
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="username" style={{ display: 'block' }}>
+              Username
             </label>
-            <br />
-            <label>
-              Password:
-              <br />
-              <input
-                type="password"
-                name="endingTicNum"
-                value={this.state.endingTicNum}
-                onChange={this.handleChange}
-              />
+            <input
+              name="username"
+              placeholder="Enter your username"
+              type="text"
+              value={values.username}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={
+                errors.username && touched.username
+                  ? 'text-input error'
+                  : 'text-input'
+              }
+            />
+            {errors.username && touched.username && (
+              <div className="input-feedback">{errors.username}</div>
+            )}
+            <label htmlFor="password" style={{ display: 'block' }}>
+              Password
             </label>
-            <br />
-            <label>
-              Email:
-              <br />
-              <input
-                type="email"
-                name="totalMoney"
-                value={this.state.totalMoney}
-                onChange={this.handleChange}
-              />
+            <input
+              name="password"
+              placeholder="Enter your password"
+              type="password"
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={
+                errors.password && touched.password
+                  ? 'text-input error'
+                  : 'text-input'
+              }
+            />
+            {errors.email && touched.email && (
+              <div className="input-feedback">{errors.password}</div>
+            )}
+            <label htmlFor="email" style={{ display: 'block' }}>
+              Email
             </label>
-            <br />
-            <label>
-              Street Number:
-              <br />
-              <input
-                type="number"
-                name="totalhours"
-                value={this.state.totalhours}
-                onChange={this.handleChange}
-              />
+            <input
+              name="email"
+              placeholder="Enter your email"
+              type="text"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={
+                errors.email && touched.email
+                  ? 'text-input error'
+                  : 'text-input'
+              }
+            />
+            {errors.email && touched.email && (
+              <div className="input-feedback">{errors.email}</div>
+            )}
+            <label htmlFor="streetNumber" style={{ display: 'block' }}>
+              Street Number
             </label>
-            <br />
-            <label>
-              Street Name:
-              <br />
-              <input
-                type="number"
-                name="totalhours"
-                value={this.state.totalhours}
-                onChange={this.handleChange}
-              />
+            <input
+              name="streetNumber"
+              placeholder="Enter your streetNumber"
+              type="number"
+              value={values.streetNumber}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={
+                errors.streetNumber && touched.streetNumber
+                  ? 'text-input error'
+                  : 'text-input'
+              }
+            />
+            {errors.streetNumber && touched.streetNumber && (
+              <div className="input-feedback">{errors.streetNumber}</div>
+            )}
+            <label htmlFor="streetName" style={{ display: 'block' }}>
+              Street Name
             </label>
-            <br />
-            <label>
-              City:
-              <br />
-              <input
-                type="number"
-                name="totalhours"
-                value={this.state.totalhours}
-                onChange={this.handleChange}
-              />
+            <input
+              name="streetName"
+              placeholder="Enter your streetName"
+              type="text"
+              value={values.streetName}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={
+                errors.streetName && touched.streetName
+                  ? 'text-input error'
+                  : 'text-input'
+              }
+            />
+            {errors.streetName && touched.streetName && (
+              <div className="input-feedback">{errors.streetName}</div>
+            )}
+            <label htmlFor="city" style={{ display: 'block' }}>
+              City
             </label>
+            <input
+              name="city"
+              placeholder="Enter your city"
+              type="text"
+              value={values.city}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={
+                errors.city && touched.city ? 'text-input error' : 'text-input'
+              }
+            />
+            {errors.city && touched.city && (
+              <div className="input-feedback">{errors.city}</div>
+            )}
             <br />
-            <button type="submit" className="btn btn-success">
-              Submit
+            <button
+              type="button"
+              className="outline"
+              onClick={handleReset}
+              disabled={!dirty || isSubmitting}
+            >
+              Reset
+            </button>
+            <button type="submit" disabled={isSubmitting}>
+              Signup
             </button>
           </form>
-        </center>
-      </div>
-    );
-  }
-}
+        </div>
+      )}
+    />
+  );
+};
+
+export default SignupForm;

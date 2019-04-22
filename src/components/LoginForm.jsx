@@ -1,69 +1,80 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Formik } from 'formik';
+//import Yup from 'yup';
 
-export default class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: ''
-    };
+const LoginForm = () => {
+  return (
+    <Formik
+      initialValues={{ email: '', password: '' }}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 1000);
+      }}
+      render={({
+        values,
+        touched,
+        errors,
+        dirty,
+        isSubmitting,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        handleReset
+      }) => (
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="email" style={{ display: 'block' }}>
+            Email
+          </label>
+          <input
+            name="email"
+            placeholder="Enter your email"
+            type="text"
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={
+              errors.email && touched.email ? 'text-input error' : 'text-input'
+            }
+          />
+          {errors.email && touched.email && (
+            <div className="input-feedback">{errors.email}</div>
+          )}
+          <label htmlFor="password" style={{ display: 'block' }}>
+            Password
+          </label>
+          <input
+            name="password"
+            placeholder="Enter your password"
+            type="password"
+            value={values.password}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={
+              errors.password && touched.password
+                ? 'text-input error'
+                : 'text-input'
+            }
+          />
+          {errors.email && touched.email && (
+            <div className="input-feedback">{errors.password}</div>
+          )}
+          <button
+            type="button"
+            className="outline"
+            onClick={handleReset}
+            disabled={!dirty || isSubmitting}
+          >
+            Reset
+          </button>
+          <button type="submit" disabled={isSubmitting}>
+            Login
+          </button>
+        </form>
+      )}
+    />
+  );
+};
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    console.log(
-      'UserName: \n' +
-        this.state.username +
-        '\nPassWord:\n' +
-        this.state.password
-    );
-  }
-  render() {
-    return (
-      <div className="container">
-        <div className="col-12" />
-        <div className="card text-white border-primary mb-3 text-center">
-          <div className="card-header bg-light text-dark">Login Form</div>
-          <form className="align-content-center">
-            <div className="card-body bg-secondary">
-              <div className="form-group">
-                <label htmlFor="username">Username</label>
-                <br />
-                <input
-                  className="form-control"
-                  type="text"
-                  name="username"
-                  value={this.state.username}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <br />
-                <input
-                  className="form-control"
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-            <div className="card-footer text-muted">
-              <button type="submit" className="btn btn-group-lg btn-primary">
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    );
-  }
-}
+export default LoginForm;
