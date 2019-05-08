@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; //use Link instead of <a
+import OShip_Icon_v4 from '../assets/images/OShip_Icon_v4.png';
+import { Link } from 'react-router-dom'; //use Link instead of <a>
 
 const Navigation = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link to="/" className="navbar-brand">
-        <img src={'../assets/images/OShip_Icon_v4.png'} alt="Sample avatar" />
+        <img src={OShip_Icon_v4} alt="Sample avatar" />
       </Link>
       <button
         className="navbar-toggler"
@@ -45,6 +46,7 @@ const Navigation = () => {
               My Requests
             </Link>
           </li>
+
           <li className="nav-item">
             <Link to="/becomedriver-form" className="nav-link">
               Become Driver
