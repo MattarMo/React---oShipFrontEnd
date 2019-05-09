@@ -52,6 +52,11 @@ const Navigation = () => {
               Become Driver
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to="/spinner" className="nav-link">
+              spinner
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>
