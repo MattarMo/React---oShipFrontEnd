@@ -8,6 +8,7 @@ import { Route } from 'react-router-dom';
 import ItemListView from '../components/ItemListView.jsx';
 import CreateRequestForm from '../components/CreateRequestForm.jsx';
 import BecomeDriverForm from '../components/BecomeDriverForm.jsx';
+import Spinner from '../components/Spinner.jsx';
 
 class Core extends Component {
   render() {
@@ -22,6 +23,7 @@ class Core extends Component {
         <Route path="/list-view" component={ItemListView} />
         <Route path="/createrequest-form" component={CreateRequestForm} />
         <Route path="/becomedriver-form" component={BecomeDriverForm} />
+        <Route path="/spinner" component={Spinner} />
       </div>
     );
   }
