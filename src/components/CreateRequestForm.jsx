@@ -12,9 +12,7 @@ const CreateRequestFormSchema = Yup.object().shape({
     .min(8, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
-  pickupCity: Yup.string()
-    .email('Invalid email')
-    .required('Required'),
+  pickupCity: Yup.string().required('Required'),
   pickupZipcode: Yup.number()
     .min(1, 'Too Short!')
     .max(50, 'Too Long!')
@@ -31,9 +29,7 @@ const CreateRequestFormSchema = Yup.object().shape({
     .min(8, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
-  dropoffCity: Yup.string()
-    .email('Invalid email')
-    .required('Required'),
+  dropoffCity: Yup.string().required('Required'),
   dropoffZipcode: Yup.number()
     .min(1, 'Too Short!')
     .max(50, 'Too Long!')
@@ -44,21 +40,23 @@ const CreateRequestFormSchema = Yup.object().shape({
     .required('Required')
 });
 
+const initialState = {
+  pickupStreetNumber: '',
+  pickupStreetName: '',
+  pickupCity: '',
+  pickupZipcode: '',
+  pickupInstructions: '',
+  dropoffStreetNumber: '',
+  dropoffStreetName: '',
+  dropoffCity: '',
+  dropoffZipcode: '',
+  dropoffInstructions: ''
+};
+
 const CreateRequestForm = () => {
   return (
     <Formik
-      initialValues={{
-        pickupStreetNumber: '',
-        pickupStreetName: '',
-        pickupCity: '',
-        pickupZipcode: '',
-        pickupInstructions: '',
-        dropoffStreetNumber: '',
-        dropoffStreetName: '',
-        dropoffCity: '',
-        dropoffZipcode: '',
-        dropoffInstructions: ''
-      }}
+      initialValues={initialState}
       validationSchema={CreateRequestFormSchema}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -83,7 +81,7 @@ const CreateRequestForm = () => {
               <div className="card card-signin my-5">
                 <div className="card-body">
                   <h5 className="card-title text-center">Create Request</h5>
-                  <form className="form-signin" onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit}>
                     <table>
                       <tr>
                         <th>
@@ -307,21 +305,37 @@ const CreateRequestForm = () => {
                         </td>
                       </tr>
                       <br />
-                      <button
-                        className="btn btn-lg btn-success btn-block text-uppercase"
-                        type="submit"
-                        disabled={isSubmitting}
-                      >
-                        Create
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-success btn-block text-uppercase"
-                        onClick={handleReset}
-                        disabled={!dirty || isSubmitting}
-                      >
-                        Reset
-                      </button>
+                      {!isSubmitting ? (
+                        <>
+                          <button
+                            className="btn btn-lg btn-success btn-block text-uppercase"
+                            type="submit"
+                          >
+                            Create Request
+                          </button>
+                          <button
+                            type="button"
+                            className="btn btn-lg btn-success btn-block text-uppercase"
+                            onClick={handleReset}
+                            disabled={!dirty || isSubmitting}
+                          >
+                            Reset
+                          </button>
+                        </>
+                      ) : (
+                        <button
+                          className="btn btn-lg btn-success btn-block text-uppercase"
+                          type="button"
+                          disabled
+                        >
+                          <span
+                            className="spinner-border spinner-border-md float-left"
+                            role="status"
+                            aria-hidden="true"
+                          />
+                          Creating Request
+                        </button>
+                      )}
                     </table>
                   </form>
                 </div>

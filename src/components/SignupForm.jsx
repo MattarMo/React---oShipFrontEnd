@@ -26,23 +26,25 @@ const SignUpSchema = Yup.object().shape({
   city: Yup.string().required('Required')
 });
 
+const initialState = {
+  username: '',
+  password: '',
+  email: '',
+  streetNumber: '',
+  streetName: '',
+  city: ''
+};
+
 const SignupForm = () => {
   return (
     <Formik
-      initialValues={{
-        username: '',
-        password: '',
-        email: '',
-        streetNumber: '',
-        streetName: '',
-        city: ''
-      }}
+      initialValues={initialState}
       validationSchema={SignUpSchema}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
           setSubmitting(false);
-        }, 1000);
+        }, 5000);
       }}
       render={({
         values,
@@ -61,7 +63,7 @@ const SignupForm = () => {
               <div className="card card-signin my-5">
                 <div className="card-body">
                   <h5 className="card-title text-center">Sign Up</h5>
-                  <form className="form-signin" onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit}>
                     <div className="form-label-group">
                       <input
                         name="username"
@@ -166,21 +168,37 @@ const SignupForm = () => {
                       )}
                     </div>
                     <br />
-                    <button
-                      className="btn btn-lg btn-success btn-block text-uppercase"
-                      type="submit"
-                      disabled={isSubmitting}
-                    >
-                      Signup
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-success btn-block text-uppercase"
-                      onClick={handleReset}
-                      disabled={!dirty || isSubmitting}
-                    >
-                      Reset
-                    </button>
+                    {!isSubmitting ? (
+                      <>
+                        <button
+                          className="btn btn-lg btn-success btn-block text-uppercase"
+                          type="submit"
+                        >
+                          Login
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-lg btn-success btn-block text-uppercase"
+                          onClick={handleReset}
+                          disabled={!dirty || isSubmitting}
+                        >
+                          Reset
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        className="btn btn-lg btn-success btn-block text-uppercase"
+                        type="button"
+                        disabled
+                      >
+                        <span
+                          className="spinner-border spinner-border-md float-left"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                        Signing up
+                      </button>
+                    )}
                   </form>
                 </div>
               </div>

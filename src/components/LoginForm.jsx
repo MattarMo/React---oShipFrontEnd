@@ -13,22 +13,25 @@ const LoginSchema = Yup.object().shape({
     .required('Required')
 });
 
+const initialState = {
+  email: '',
+  password: ''
+};
 const LoginForm = () => {
   return (
     <Formik
-      initialValues={{ email: '', password: '' }}
+      initialValues={initialState}
       validationSchema={LoginSchema}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
           setSubmitting(false);
-        }, 1000);
+        }, 5000);
       }}
       render={({
         values,
         touched,
         errors,
-
         isSubmitting,
         handleChange,
         handleBlur,
@@ -74,13 +77,28 @@ const LoginForm = () => {
                       )}
                     </div>
                     <br />
-                    <button
-                      className="btn btn-lg btn-success btn-block text-uppercase"
-                      type="submit"
-                      disabled={isSubmitting}
-                    >
-                      Login
-                    </button>
+
+                    {!isSubmitting ? (
+                      <button
+                        className="btn btn-lg btn-success btn-block text-uppercase"
+                        type="submit"
+                      >
+                        Login
+                      </button>
+                    ) : (
+                      <button
+                        className="btn btn-lg btn-success btn-block text-uppercase"
+                        type="button"
+                        disabled
+                      >
+                        <span
+                          className="spinner-border spinner-border-md float-left"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                        Logging in
+                      </button>
+                    )}
                   </form>
                 </div>
               </div>

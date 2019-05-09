@@ -12,17 +12,19 @@ const BecomeDriverFormSchema = Yup.object().shape({
   carLicensePlate: Yup.string().required('Required')
 });
 
+const initialState = {
+  driversLicense: '',
+  carMake: '',
+  carModel: '',
+  carYear: '',
+  carColor: '',
+  carLicensePlate: ''
+};
+
 const BecomeDriverForm = () => {
   return (
     <Formik
-      initialValues={{
-        driversLicense: '',
-        carMake: '',
-        carModel: '',
-        carYear: '',
-        carColor: '',
-        carLicensePlate: ''
-      }}
+      initialValues={initialState}
       validationSchema={BecomeDriverFormSchema}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -144,13 +146,27 @@ const BecomeDriverForm = () => {
                       )}
                     </div>
                     <br />
-                    <button
-                      className="btn btn-lg btn-success btn-block text-uppercase"
-                      type="submit"
-                      disabled={isSubmitting}
-                    >
-                      Become Driver
-                    </button>
+                    {!isSubmitting ? (
+                      <button
+                        className="btn btn-lg btn-success btn-block text-uppercase"
+                        type="submit"
+                      >
+                        Become a Driver
+                      </button>
+                    ) : (
+                      <button
+                        className="btn btn-lg btn-success btn-block text-uppercase"
+                        type="button"
+                        disabled
+                      >
+                        <span
+                          className="spinner-border spinner-border-md float-left"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                        Becoming a Driver
+                      </button>
+                    )}
                   </form>
                 </div>
               </div>
